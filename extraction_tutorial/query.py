@@ -22,4 +22,5 @@ def query_url(url):
 
 
 if __name__ == "__main__":
-    pprint.pprint(query_url("https://lethain.com/migrations/"))
+    results = query_url("https://lethain.com/migrations/")
+    pprint.pprint(dict(results))
