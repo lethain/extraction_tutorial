@@ -1,4 +1,6 @@
 
+Example project using [Graphene](https://graphene-python.org/) to create a GraphQL
+server and client pair in Python.
 
 
 ## Setup
