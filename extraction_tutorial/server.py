@@ -1,26 +1,11 @@
-import graphene
-import extraction
-import requests
+"""
+Python HTTP server for GraphQL.
+"""
+from flask import Flask
+from flask_graphql import GraphQLView
+from extraction_tutorial.schema import schema
 
 
-
-class Website(graphene.ObjectType):
-    url = graphene.String(required=True)
-    title = graphene.String()
-    description = graphene.String()
-    image = graphene.String()
-
-class Query(graphene.ObjectType):
-    website = graphene.Field(Website, url=graphene.String())
-
-    def resolve_website(self, info, url):
-        html = requests.get(url).text
-        extracted = extraction.Extractor().extract(html, source_url=url)
-        return Website(url=extracted.url,
-                       title=extracted.title,
-                       description=extracted.description,
-                       image=extracted.image
-        )
-
-
-schema = graphene.Schema(query=Query)
+app = Flask(__name__)
+app.add_url_rule('/', view_func=GraphQLView.as_view('graphql', schema=schema, graphiql=True))
+app.run()
