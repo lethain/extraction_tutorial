@@ -1,11 +1,15 @@
 
 This repository is an Example project using [Graphene](https://graphene-python.org/)
-and [flask-graphql]() to create a [GraphQL]()
+and [flask-graphql](https://github.com/graphql-python/flask-graphql) to create a [GraphQL](https://graphql.org/)
 server and client pair in Python.
 
-The specific
+The example server will crawl websites and extract summaries using the [extraction](https://github.com/lethain/extraction)
+library (mostly relying on Opengraph metadata).
 
-https://github.com/lethain/extraction
+You can query the server via [GraphiQL](https://github.com/graphql/graphiql) by running
+the server and visiting `http://localhost:5000`.
+
+---
 
 Queries against the server look like:
 
